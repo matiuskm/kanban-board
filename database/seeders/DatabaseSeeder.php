@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Group;
+use App\Models\Task;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        $group = Group::factory()->state(['name' => 'To-Do'])->create();
+        $group = Group::factory()->state(['name' => 'To Do'])->create();
         Task::factory(3)
             ->state(new Sequence(
                 ['sort' => 0, 'description' => 'Task 1'],

@@ -16,7 +16,7 @@
             </div>
             <div class="flex-shrink-0 ml-6 flex items-center">
                 <button>
-                    <img class="inline-block size-8 object-cover rounded-full" src="/img/profile.png">
+                    <img class="inline-block size-8 object-cover rounded-full" src="/img/_02bda3af-91ac-44b1-81eb-9c0055e60919.jpeg" alt="">
                 </button>
             </div>
         </div>

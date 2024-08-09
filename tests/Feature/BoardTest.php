@@ -9,16 +9,16 @@ use App\Models\Task;
 it('shows all groups', function () {
     Group::factory(3)
         ->state(new Sequence(
-            ['name' => 'To-Do'],
-            ['name' => 'Doing'],
+            ['name' => 'To Do'],
+            ['name' => 'In Progress'],
             ['name' => 'Done']
         ))
         ->create();
-        
+
     Livewire::test(Board::class)
         ->assertSeeText([
-            'To-Do',
-            'Doing',
+            'To Do',
+            'In Progress',
             'Done',
         ]);
 });
@@ -39,7 +39,7 @@ it('it shows all tasks from a group', function () {
 
     Livewire::test(Board::class)
         ->assertSeeText([
-            'Task 1',
+            'Task 1', 
             'Task 2',
             'Task 3',
         ]);
