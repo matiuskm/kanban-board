@@ -12,6 +12,16 @@ class Task extends Model
 
     protected $guarded = [];
 
+    protected static function booted() {
+        static::creating(function (Task $task) {
+            if ($task->sort !== null) {
+                return;
+            }
+            $lastSortPosition = $task->group->tasks->max('sort');
+            $task->sort = $lastSortPosition == null ? 0 : $lastSortPosition + 1;
+        });
+    }
+
     public function group(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Group::class);

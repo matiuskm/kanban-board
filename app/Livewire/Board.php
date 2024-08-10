@@ -6,11 +6,15 @@ use App\Models\Group;
 use App\View\Components\KanbanLayout;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class Board extends Component
 {
     public $groups;
+
+    #[Rule('required')]
+    public $description;
 
     public function mount() {
         $this->groups = Group::all();
@@ -44,5 +48,15 @@ class Board extends Component
 
             $task->update(['sort' => $targetSortPosition]);
         });
+    }
+
+    public function createTask(Group $group ) {
+        $this->validate();
+
+        $group->tasks()->create([
+            'description' => $this->pull('description'),
+        ]);
+
+        $this->dispatch('task-created');
     }
 }
